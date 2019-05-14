@@ -1,8 +1,8 @@
 version: '3.4'
 
 services:
-  mysql:
-    image: mcr.microsoft.com/mssql/server:2017-latest
+  db:
+    image: microsoft/mssql-server-linux
     hostname: sqlserver
     container_name: sqlserver
     ports:
@@ -11,7 +11,7 @@ services:
       ACCEPT_EULA: 'Y'
       SA_PASSWORD: "1qazXSW@"
     volumes:
-      - ./mysql-data:/var/lib/mysql
+      - ./db-data:/var/lib/db
     restart: always
     networks:
       - onlinestore-net
@@ -22,12 +22,12 @@ services:
       context: .
       dockerfile: OnlineStore/Dockerfile
     depends_on:
-      - mysql
+      - db
     networks:
       - onlinestore-net
 
 volumes:
-  mysql-data:
+  db-data:
 networks:
   onlinestore-net:
     driver: bridge
