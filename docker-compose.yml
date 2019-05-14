@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  onlinestore:
+    image: ${DOCKER_REGISTRY-}onlinestore
+    build:
+      context: .
+      dockerfile: OnlineStore/Dockerfile
