@@ -9,7 +9,7 @@ services:
       - "1433:1433"
     environment:
       ACCEPT_EULA: 'Y'
-      SA_PASSWORD: "1qazXSW@"
+      SA_PASSWORD: "Password123"
     volumes:
       - ./db-data:/var/lib/db
     restart: always
